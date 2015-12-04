@@ -34,29 +34,7 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
         recyclerView.setLayoutManager(layoutManager);
 
-        //Uses the builder design pattern
-        Gson gson = new GsonBuilder()
-                .setFieldNamingStrategy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
-
-        URL url = null;
-        try {
-            url = new URL("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        HttpsURLConnection connection = null;
-        try {
-            connection = (HttpsURLConnection) url.openConnection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        InputStream in = null;
-        try {
-            in = connection.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        Gson gson = new Gson();
         earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
 
         EarthquakeAdaptor adaptor = new EarthquakeAdaptor(earthquakes);
