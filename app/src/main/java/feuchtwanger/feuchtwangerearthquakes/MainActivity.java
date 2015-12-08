@@ -34,11 +34,7 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
         recyclerView.setLayoutManager(layoutManager);
 
-        Gson gson = new Gson();
-        earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
 
-        EarthquakeAdaptor adaptor = new EarthquakeAdaptor(earthquakes);
-        recyclerView.setAdapter(adaptor);
     }
 
     @Override

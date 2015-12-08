@@ -12,7 +12,7 @@ public class EarthquakeViewHolder extends RecyclerView.ViewHolder{
         title = (TextView) itemView.findViewById(R.id.title);
     }
 
-    public void bind(int earthquake){
+    public void bind(String earthquake){
         title.setText(earthquake);
     }
 }

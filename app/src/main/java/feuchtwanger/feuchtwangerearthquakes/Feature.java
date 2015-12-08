@@ -10,4 +10,16 @@ public class Feature implements Serializable{
     private EarthquakeProperties properties;
     private Geometry geometry;
     private String id;
+
+    public String getTitle(){
+        return properties.getTitle();
+    }
+
+    public String getPlace(){
+        return properties.getPlace();
+    }
+
+    public double getMag(){
+        return properties.getMag();
+    }
 }

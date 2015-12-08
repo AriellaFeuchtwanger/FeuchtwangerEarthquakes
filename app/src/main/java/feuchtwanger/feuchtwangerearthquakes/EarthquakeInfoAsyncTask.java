@@ -52,6 +52,11 @@ public class EarthquakeInfoAsyncTask extends AsyncTask<Long, String, String> {
             e.printStackTrace();
         }
         this.earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
+        Gson gson = new Gson();
+        earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
+
+        EarthquakeAdaptor adaptor = new EarthquakeAdaptor(earthquakes);
+
         return null;
     }
 }
