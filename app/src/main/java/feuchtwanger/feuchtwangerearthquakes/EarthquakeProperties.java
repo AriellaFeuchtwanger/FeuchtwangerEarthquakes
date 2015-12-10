@@ -1,15 +1,16 @@
 package feuchtwanger.feuchtwangerearthquakes;
 
+import java.io.Serializable;
 import java.net.URL;
 
 /**
  * Created by student1 on 12/3/2015.
  */
-public class EarthquakeProperties {
+public class EarthquakeProperties implements Serializable{
     private double mag;
     private String place;
-    private int time;
-    private int updated;
+    private double time;
+    private double updated;
     private int tz;
     private URL url;
     private URL detail;
@@ -33,15 +34,23 @@ public class EarthquakeProperties {
     private String type;
     private String title;
 
-    public double getMag(){
+    public double getMag() {
         return mag;
     }
 
-    public String getPlace(){
+    public String getMagType(){
+        return magType;
+    }
+
+    public String getPlace() {
         return place;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
+    }
+
+    public URL getUrl() {
+        return url;
     }
 }

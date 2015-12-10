@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class EarthquakeAdaptor extends RecyclerView.Adapter<EarthquakeViewHolder> {
-    private Earthquake[] earthquakes;
+    private EarthquakeEvent[] earthquakes;
 
-    public EarthquakeAdaptor(Earthquake[] earthquakes) {
+    public EarthquakeAdaptor(EarthquakeEvent[] earthquakes) {
         this.earthquakes = earthquakes;
     }
 
@@ -30,7 +30,7 @@ public class EarthquakeAdaptor extends RecyclerView.Adapter<EarthquakeViewHolder
             @Override
             public void onClick(View v) {
                 Context context = holder.itemView.getContext();
-                Intent intent = new Intent(context, DetailActivity.class);
+                Intent intent = new Intent(context, EarthquakeActivity.class);
                 intent.putExtra("EARTHQUAKE", earthquakes);
                 intent.putExtra("POSITION", position);
                 context.startActivity(intent);

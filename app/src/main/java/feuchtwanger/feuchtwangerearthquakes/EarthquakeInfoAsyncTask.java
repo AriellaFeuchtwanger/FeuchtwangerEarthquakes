@@ -15,24 +15,21 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class EarthquakeInfoAsyncTask extends AsyncTask<Long, String, String> {
-    private Earthquake[] earthquakes;
+public class EarthquakeInfoAsyncTask extends AsyncTask<String, String, String> {
+    private Earthquake earthquakes;
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
+        EarthquakeAdaptor adaptor = new EarthquakeAdaptor(earthquakes.getFeatures());
     }
 
     @Override
-    protected String doInBackground(Long... params) {
-        //Uses the builder design pattern
-        Gson gson = new GsonBuilder()
-                .setFieldNamingStrategy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
-
+    protected String doInBackground(String... params) {
         URL url = null;
 
         try {
-            url = new URL("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
+            url = new URL(params[0]);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -51,11 +48,8 @@ public class EarthquakeInfoAsyncTask extends AsyncTask<Long, String, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
         Gson gson = new Gson();
-        earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake[].class);
-
-        EarthquakeAdaptor adaptor = new EarthquakeAdaptor(earthquakes);
+        earthquakes = gson.fromJson(new InputStreamReader(in), Earthquake.class);
 
         return null;
     }

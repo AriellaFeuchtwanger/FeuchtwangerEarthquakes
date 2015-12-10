@@ -6,7 +6,7 @@ import java.net.URL;
  * Created by student1 on 12/3/2015.
  */
 public class Metadata {
-    private int generated;
+    private double generated;
     private URL url;
     private String title;
     private int status;
